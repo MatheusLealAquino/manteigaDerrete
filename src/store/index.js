@@ -1,1 +1,1 @@
-export const recipe = require('./recipe');
+export const recipe = require('../features/recipe/recipe.store');
