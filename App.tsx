@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, BackHandler, Alert } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NativeRouter, Route, Link, BackButton } from 'react-router-native';
 
