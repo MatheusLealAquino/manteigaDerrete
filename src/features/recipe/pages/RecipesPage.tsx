@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, FlatList, View, Text } from 'react-native';
+import { Link } from 'react-router-native';
+
 import DefaultStyle from '../../../style/default.style';
 import Card from '../components/Card';
 
@@ -18,20 +20,17 @@ export default () => {
 					{key: 'Jillian'},
 					{key: 'Jimmy'},
 					{key: 'Julie'},
-					{key: 'John'},
-					{key: 'Jillian'},
-					{key: 'Jimmy'},
-					{key: 'Julie'},
-					{key: 'John'},
-					{key: 'Jillian'},
-					{key: 'Jimmy'},
-					{key: 'Julie'},
 				]}
 				renderItem={
 					({item}) => {
-						return <Card
-							name={item.key}
-						/>
+						return <Link
+							to="/topics"
+							underlayColor="#f0f4f7"
+						>
+							<Card
+								name={item.key}
+							/>
+						</Link>
 					}
 				}
 			/>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, BackHandler, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { NativeRouter, Route, Link } from 'react-router-native';
+import { NativeRouter, Route, Link, BackButton } from 'react-router-native';
 
 import DefaultStyle from './src/style/default.style';
+import colorsStyle from './src/style/colors.style';
 
-import RoutesInterface from './src/interfaces/RoutesInterface';
 import routes from './src/routes';
 
 export default function App() {
@@ -15,40 +15,41 @@ export default function App() {
 				<View style={styles.nav}>
 					<Link
 						to="/"
-						underlayColor="#f0f4f7"
+						underlayColor={colorsStyle.blue_100}
 						style={styles.navItem}
 					>
 						<Text
 							style={styles.navItemText}
 						>
-							Home
+							Receitas
 						</Text>
 					</Link>
 					<Link
-						to="/topics"
-						underlayColor="#f0f4f7"
+						to="/list"
+						underlayColor={colorsStyle.blue_100}
 						style={styles.navItem}
 					>
 						<Text
 							style={styles.navItemText}
 						>
-							Topics
+							Lista de compras
 						</Text>
 					</Link>
 				</View>
 
 				{
-					routes.map((route: RoutesInterface, index: Number) => (
+					routes.map((route, index: number) => (
 						<Route
-						key={index}
-						path={route.path}
-						exact={route.exact}
-						component={route.main}
+							key={index}
+							path={route.path}
+							exact={route.exact}
+							component={route.main}
 						/>
 					))
 				}
 
 				<StatusBar style="auto" />
+				<BackButton />
 			</View>
 		</NativeRouter>
 	);
