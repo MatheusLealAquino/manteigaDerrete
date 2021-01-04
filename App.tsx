@@ -24,7 +24,8 @@ export default function App() {
 							Receitas
 						</Text>
 					</Link>
-					<Link
+
+					{/* <Link
 						to="/list"
 						underlayColor={colorsStyle.blue_100}
 						style={styles.navItem}
@@ -34,7 +35,7 @@ export default function App() {
 						>
 							Lista de compras
 						</Text>
-					</Link>
+					</Link> */}
 				</View>
 
 				{
