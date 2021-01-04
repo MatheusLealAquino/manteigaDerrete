@@ -55,6 +55,7 @@ export default (props: {
 			<Animated.View
 				style={{
 					transform: [{ translateX: pan.x }, { translateY: 0 }],
+					borderRadius: 5,
 				}}
 				{...panResponder.panHandlers}
 			>
@@ -79,9 +80,6 @@ export default (props: {
 
 const styles = StyleSheet.create({
 	listItem: {
-		borderTopColor: colorsStyle.black,
-		borderTopWidth: 0.3,
-
 		height: 80,
     marginLeft: -100,
     justifyContent: 'center',
@@ -101,13 +99,17 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   innerCell: {
+		borderTopColor: colorsStyle.black,
+		borderTopWidth: 0.3,
+		borderBottomColor: colorsStyle.black,
+		borderBottomWidth: 0.3,
+		backgroundColor: colorsStyle.white,
+
     width: Dimensions.get('window').width,
     height: 80,
     marginLeft: 100,
     justifyContent: 'center',
 		alignItems: 'center',
-
-		backgroundColor: colorsStyle.white,
 	},
 	item: {
 		justifyContent: 'center',
