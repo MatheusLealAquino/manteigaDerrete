@@ -23,6 +23,7 @@ export default () => {
 				renderItem={
 					({item}) => {
 						return <Card
+							id={item.key}
 							name={item.key}
 						/>
 					}

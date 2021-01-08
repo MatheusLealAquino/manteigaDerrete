@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {
-	Animated, PanResponder, StyleSheet, View, Text, Dimensions, Alert
+	Animated, PanResponder, StyleSheet, View, Text, Dimensions, Alert,
+	Button
 } from 'react-native';
 import { Link } from 'react-router-native';
 import colorsStyle from '../../../style/colors.style';
@@ -15,6 +16,7 @@ export default (props: {
 	const minimumWidth = (totalWidth * 35) / 100;
 	const gestureDelay = -50;
 
+	const [deleteReceipe, setDeleteReceipe] = useState(false);
 	const pan = useRef(new Animated.ValueXY()).current;
 
   const panResponder = useRef(
@@ -56,12 +58,11 @@ export default (props: {
 				{...panResponder.panHandlers}
 			>
 				<View style={styles.absoluteCell}>
-					<Link
-						to="/topics"
-						underlayColor="#ffffff00"
-					>
-						<Text style={styles.absoluteCellText}>Delete</Text>
-					</Link>
+					<Text
+						style={styles.absoluteCellText}
+						onPress={() => setDeleteReceipe(true)}>
+							Delete
+					</Text>
 				</View>
 
 				<View style={styles.innerCell}>
@@ -99,6 +100,9 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
   },
   absoluteCellText: {
+		paddingTop: 20,
+		paddingBottom: 20,
+		paddingRight: 20,
     margin: 16,
     color: '#FFF',
   },
