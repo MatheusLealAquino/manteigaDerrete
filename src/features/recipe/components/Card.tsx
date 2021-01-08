@@ -6,12 +6,13 @@ import { Link } from 'react-router-native';
 import colorsStyle from '../../../style/colors.style';
 
 export default (props: {
-	name: string
+	name: string,
+	id: string
 }) => {
-	const width = Dimensions.get('window').width;
-	const maximumWidth = (width * 80) / 100;
-	const mediumWidth = (width * 60) / 100;
-	const minimumWidth = (width * 35) / 100;
+	const totalWidth = Dimensions.get('window').width;
+	const maximumWidth = (totalWidth * 80) / 100;
+	const mediumWidth = (totalWidth * 60) / 100;
+	const minimumWidth = (totalWidth * 35) / 100;
 	const gestureDelay = -50;
 
 	const pan = useRef(new Animated.ValueXY()).current;
@@ -22,7 +23,7 @@ export default (props: {
     	onMoveShouldSetPanResponder: (evt, gestureState) => true,
     	onPanResponderTerminationRequest: (evt, gestureState) => false,
 			onPanResponderMove: (evt, gestureState) => {
-				if (gestureState.dx < maximumWidth) {
+				if (gestureState.dx < maximumWidth && gestureState.dx > minimumWidth) {
 					const newX = gestureState.dx + gestureDelay;
 					pan.setValue({x: newX, y: 0});
 				}
@@ -37,7 +38,7 @@ export default (props: {
 				} else {
 					Animated.timing(pan, {
 						useNativeDriver: true,
-						toValue: {x: mediumWidth, y: 0},
+						toValue: {x: minimumWidth, y: 0},
 						duration: 150,
 					}).start(() => {});
 				}
@@ -57,16 +58,24 @@ export default (props: {
 				<View style={styles.absoluteCell}>
 					<Link
 						to="/topics"
-						underlayColor="#f0f4f7"
+						underlayColor="#ffffff00"
 					>
-						<Text style={styles.absoluteCellText}>Enter</Text>
+						<Text style={styles.absoluteCellText}>Delete</Text>
 					</Link>
 				</View>
 
 				<View style={styles.innerCell}>
-					<Text style={styles.item}>
-						{props.name}
-					</Text>
+					<Link
+					style={{
+						width: totalWidth
+					}}
+					to={'/receipe/' + props.id}
+					underlayColor="#ffffff00"
+					>
+						<Text style={styles.item}>
+							{props.name}
+						</Text>
+					</Link>
 				</View>
 			</Animated.View>
 		</View>
@@ -78,7 +87,7 @@ const styles = StyleSheet.create({
 		height: 80,
     marginLeft: -100,
     justifyContent: 'center',
-		backgroundColor: 'green',
+		backgroundColor: 'red',
   },
   absoluteCell: {
     position: 'absolute',
@@ -86,7 +95,7 @@ const styles = StyleSheet.create({
     bottom: 0,
 		left: 0,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+		justifyContent: 'center',
 		alignItems: 'center',
   },
   absoluteCellText: {
@@ -94,6 +103,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   innerCell: {
+		zIndex: 1,
 		borderTopColor: colorsStyle.black,
 		borderTopWidth: 0.3,
 		borderBottomColor: colorsStyle.black,
