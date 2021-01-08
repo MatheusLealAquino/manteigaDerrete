@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import {
-	Animated, PanResponder, StyleSheet, View, Text, Dimensions
+	Animated, PanResponder, StyleSheet, View, Text, Dimensions, Alert
 } from 'react-native';
 import { Link } from 'react-router-native';
 import colorsStyle from '../../../style/colors.style';
@@ -9,10 +9,10 @@ export default (props: {
 	name: string
 }) => {
 	const width = Dimensions.get('window').width;
+	const maximumWidth = (width * 80) / 100;
 	const mediumWidth = (width * 60) / 100;
 	const minimumWidth = (width * 35) / 100;
 	const gestureDelay = -50;
-	const [scrollViewEnabled, setScrollViewEnabled] = useState(true);
 
 	const pan = useRef(new Animated.ValueXY()).current;
 
@@ -22,29 +22,24 @@ export default (props: {
     	onMoveShouldSetPanResponder: (evt, gestureState) => true,
     	onPanResponderTerminationRequest: (evt, gestureState) => false,
 			onPanResponderMove: (evt, gestureState) => {
-				if (gestureState.dx > minimumWidth) {
-					setScrollViewEnabled(false);
-					let newX = gestureState.dx + gestureDelay;
+				if (gestureState.dx < maximumWidth) {
+					const newX = gestureState.dx + gestureDelay;
 					pan.setValue({x: newX, y: 0});
 				}
 			},
 			onPanResponderRelease: (evt, gestureState) => {
-				if (gestureState.dx < mediumWidth) {
+				if (gestureState.dx < minimumWidth) {
 					Animated.timing(pan, {
 						useNativeDriver: true,
 						toValue: {x: 0, y: 0},
 						duration: 150,
-					}).start(() => {
-						setScrollViewEnabled(true);
-					});
+					}).start(() => {});
 				} else {
 					Animated.timing(pan, {
 						useNativeDriver: true,
-						toValue: {x: width, y: 0},
-						duration: 300,
-					}).start(() => {
-						setScrollViewEnabled(true);
-					});
+						toValue: {x: mediumWidth, y: 0},
+						duration: 150,
+					}).start(() => {});
 				}
     	},
     })
@@ -108,10 +103,11 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: 80,
     marginLeft: 100,
-    justifyContent: 'center',
-		alignItems: 'center',
+    justifyContent: 'space-around',
+		alignItems: 'flex-start',
 	},
 	item: {
+		paddingLeft: 20,
 		justifyContent: 'center',
 		alignItems: 'center',
 		fontSize: 18,
