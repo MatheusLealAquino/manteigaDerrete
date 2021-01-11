@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
 import {
-	Animated, PanResponder, StyleSheet, View, Text, Dimensions, Alert,
-	Button
+	Animated, PanResponder, StyleSheet, View, Text, Dimensions,
 } from 'react-native';
 import { Link } from 'react-router-native';
 import colorsStyle from '../../../style/colors.style';
 
 export default (props: {
 	name: string,
-	id: string
+	id: string,
+	onDelete: Function
 }) => {
 	const totalWidth = Dimensions.get('window').width;
 	const maximumWidth = (totalWidth * 80) / 100;
@@ -60,7 +60,10 @@ export default (props: {
 				<View style={styles.absoluteCell}>
 					<Text
 						style={styles.absoluteCellText}
-						onPress={() => setDeleteReceipe(true)}>
+						onPress={() => {
+							setDeleteReceipe(true)
+							props.onDelete(props.id)
+						}}>
 							Delete
 					</Text>
 				</View>
