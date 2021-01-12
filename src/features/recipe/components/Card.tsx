@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import {
 	Animated, PanResponder, StyleSheet, View, Text, Dimensions,
+	Alert
 } from 'react-native';
 import { Link } from 'react-router-native';
 import colorsStyle from '../../../style/colors.style';
@@ -16,8 +17,27 @@ export default (props: {
 	const minimumWidth = (totalWidth * 35) / 100;
 	const gestureDelay = -50;
 
-	const [deleteReceipe, setDeleteReceipe] = useState(false);
 	const pan = useRef(new Animated.ValueXY()).current;
+
+	function tryDelete () {
+		Alert.alert(
+      `Deletar: ${props.name}`,
+      'Deseja mesmo deletar?',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => console.log("Cancelar pressionado"),
+          style: 'cancel'
+        },
+        { 
+					text: 'Confirmar', onPress: () => {
+						props.onDelete(props.id)
+					}
+				}
+      ],
+      { cancelable: false }
+    );
+	};
 
   const panResponder = useRef(
     PanResponder.create({
@@ -61,20 +81,19 @@ export default (props: {
 					<Text
 						style={styles.absoluteCellText}
 						onPress={() => {
-							setDeleteReceipe(true)
-							props.onDelete(props.id)
+							tryDelete()
 						}}>
-							Delete
+							Deletar
 					</Text>
 				</View>
 
 				<View style={styles.innerCell}>
 					<Link
-					style={{
-						width: totalWidth
-					}}
-					to={'/receipe/' + props.id}
-					underlayColor="#ffffff00"
+						style={{
+							width: totalWidth
+						}}
+						to={'/receipe/' + props.id}
+						underlayColor="#ffffff00"
 					>
 						<Text style={styles.item}>
 							{props.name}
@@ -88,7 +107,7 @@ export default (props: {
 
 const styles = StyleSheet.create({
 	listItem: {
-		height: 80,
+		height: 60,
     marginLeft: -100,
     justifyContent: 'center',
 		backgroundColor: 'red',
@@ -118,7 +137,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colorsStyle.white,
 
     width: Dimensions.get('window').width,
-    height: 80,
+    height: 60,
     marginLeft: 100,
     justifyContent: 'space-around',
 		alignItems: 'flex-start',
