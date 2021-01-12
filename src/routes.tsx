@@ -9,6 +9,7 @@ export default [
 	},
 	{
 		path: '/receipe/:id',
+		exact: true,
 		main: RecipePage
 	}
 ]
