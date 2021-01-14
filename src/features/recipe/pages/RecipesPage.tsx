@@ -12,11 +12,6 @@ export default () => {
 			{key: 'Dominic'},
 			// {key: 'Jackson'},
 			// {key: 'James'},
-			// {key: 'Joel'},
-			// {key: 'John'},
-			// {key: 'Jillian'},
-			// {key: 'Jimmy'},
-			// {key: 'Julie'},
 		]
 	);
 
