@@ -1,8 +1,12 @@
 import React, { useRef } from 'react';
 import {
-	Animated, PanResponder, StyleSheet, View, Text, Dimensions,
+	Animated,
+	PanResponder,
+	StyleSheet,
+	View,
+	Text,
+	Dimensions,
 	Alert,
-	Button
 } from 'react-native';
 import colorsStyle from '../../../style/colors.style';
 
@@ -92,7 +96,8 @@ export default (props: {
 					<Text 
 						style={styles.item}
 						onPress={() => props.navigation.navigate('RecipePage', {
-							id: props.id
+							id: props.id,
+							name: props.name
 						})}
 					>
 						{props.name}
@@ -108,7 +113,7 @@ const styles = StyleSheet.create({
 		height: 60,
     marginLeft: -100,
     justifyContent: 'center',
-		backgroundColor: 'red',
+		backgroundColor: colorsStyle.red,
   },
   absoluteCell: {
     position: 'absolute',
@@ -124,7 +129,7 @@ const styles = StyleSheet.create({
 		paddingBottom: 20,
 		paddingRight: 20,
     margin: 16,
-    color: '#FFF',
+    color: colorsStyle.white,
   },
   innerCell: {
 		zIndex: 1,

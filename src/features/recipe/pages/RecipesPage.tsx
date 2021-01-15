@@ -7,16 +7,23 @@ import Card from '../components/Card';
 export default ({ navigation }) => {
 	const [names, setNames] = useState(
 		[
-			{key: 'Devin'},
-			{key: 'Dan'},
-			{key: 'Dominic'},
-			// {key: 'Jackson'},
-			// {key: 'James'},
+			{
+				_id: 'Macarrão',
+				name: 'Macarrão'
+			},
+			{
+				_id: 'Arroz',
+				name: 'Arroz'
+			},
+			{
+				_id: 'Nhoque',
+				name: 'Nhoque'
+			},
 		]
 	);
 
 	function onDelete(id: string) {
-		setNames(names.filter(el => el.key !== id));
+		setNames(names.filter(el => el._id !== id));
 	}
 
 	return (
@@ -27,8 +34,9 @@ export default ({ navigation }) => {
 				renderItem={
 					({item}) => {
 						return <Card
-							id={item.key}
-							name={item.key}
+							key={item._id}
+							id={item._id}
+							name={item.name}
 							onDelete={onDelete}
 							navigation={navigation}
 						/>

@@ -3,15 +3,13 @@ import RecipePage from './features/recipe/pages/RecipePage';
 
 export default [
 	{
-		path: '/',
-		exact: true,
 		name: 'RecipesPage',
-		main: RecipesPage
+		main: RecipesPage,
+		title: 'Receitas'
 	},
 	{
-		path: '/receipe/:id',
-		exact: true,
 		name: 'RecipePage',
-		main: RecipePage
+		main: RecipePage,
+		title: 'Receita'
 	}
 ]

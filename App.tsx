@@ -20,7 +20,8 @@ export default function App() {
 							<Stack.Screen
 								key={index}
 								name={route.name} 
-								component={route.main} 
+								component={route.main}
+								options={{ title: route.title }}
 							/>
 						))
 					}
