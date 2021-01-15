@@ -5,12 +5,13 @@ import DefaultStyle from '../../../style/default.style';
 import Divisor from '../../../components/Divisor';
 
 export default ({
-	match
+	route,
+	navigation
 }) => {
 	const [receipe, setReceipe] = useState(
 		{
-			id: match.params.id,
-			name: match.params.id,
+			id: route.params.id,
+			name: route.params.id,
 			totalTime: 30,
 			serving: 2,
 			ingredients: [
@@ -56,7 +57,10 @@ export default ({
 }
 
 const styles = StyleSheet.create({
-	container: DefaultStyle.container,
+	container: {
+		...DefaultStyle.container,
+		padding: 10
+	},
 	header: {
 		display: 'flex',
 		marginBottom: 15,

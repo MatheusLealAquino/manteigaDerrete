@@ -4,7 +4,7 @@ import { StyleSheet, FlatList, View } from 'react-native';
 import DefaultStyle from '../../../style/default.style';
 import Card from '../components/Card';
 
-export default () => {
+export default ({ navigation }) => {
 	const [names, setNames] = useState(
 		[
 			{key: 'Devin'},
@@ -30,6 +30,7 @@ export default () => {
 							id={item.key}
 							name={item.key}
 							onDelete={onDelete}
+							navigation={navigation}
 						/>
 					}
 				}

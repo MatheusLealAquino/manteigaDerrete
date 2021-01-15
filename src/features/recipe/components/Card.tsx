@@ -1,15 +1,16 @@
 import React, { useRef } from 'react';
 import {
 	Animated, PanResponder, StyleSheet, View, Text, Dimensions,
-	Alert
+	Alert,
+	Button
 } from 'react-native';
-import { Link } from 'react-router-native';
 import colorsStyle from '../../../style/colors.style';
 
 export default (props: {
 	name: string,
 	id: string,
-	onDelete: Function
+	onDelete: Function,
+	navigation: any
 }) => {
 	const totalWidth = Dimensions.get('window').width;
 	const maximumWidth = (totalWidth * 80) / 100;
@@ -88,17 +89,14 @@ export default (props: {
 				</View>
 
 				<View style={styles.innerCell}>
-					<Link
-						style={{
-							width: totalWidth
-						}}
-						to={'/receipe/' + props.id}
-						underlayColor="#ffffff00"
+					<Text 
+						style={styles.item}
+						onPress={() => props.navigation.navigate('RecipePage', {
+							id: props.id
+						})}
 					>
-						<Text style={styles.item}>
-							{props.name}
-						</Text>
-					</Link>
+						{props.name}
+					</Text>
 				</View>
 			</Animated.View>
 		</View>
@@ -147,5 +145,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		fontSize: 18,
+		width: Dimensions.get('window').width
 	},
 });

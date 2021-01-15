@@ -5,11 +5,13 @@ export default [
 	{
 		path: '/',
 		exact: true,
+		name: 'RecipesPage',
 		main: RecipesPage
 	},
 	{
 		path: '/receipe/:id',
 		exact: true,
+		name: 'RecipePage',
 		main: RecipePage
 	}
 ]
