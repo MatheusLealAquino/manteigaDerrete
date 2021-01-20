@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, FlatList, View } from 'react-native';
+import { StyleSheet, FlatList, View, Button } from 'react-native';
 
 import DefaultStyle from '../../../style/default.style';
 import Card from '../components/Card';
@@ -42,6 +42,11 @@ export default ({ navigation }) => {
 						/>
 					}
 				}
+			/>
+
+			<Button
+				title='Adicionar receita'
+				onPress={() => navigation.navigate('CreateRecipePage')}
 			/>
 		</View>
 	);
