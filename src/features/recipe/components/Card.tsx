@@ -31,7 +31,7 @@ export default (props: {
       [
         {
           text: 'Cancelar',
-          onPress: () => console.log("Cancelar pressionado"),
+          onPress: () => console.log('Cancelar pressionado'),
           style: 'cancel'
         },
         { 
