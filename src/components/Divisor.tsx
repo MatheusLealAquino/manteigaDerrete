@@ -5,7 +5,7 @@ export default (props) => {
 	return (
 		<View
 			style={{
-				borderBottomColor: 'black',
+				borderBottomColor: '#e7e4d9',
 				borderBottomWidth: 1,
 				...props.style
 			}}

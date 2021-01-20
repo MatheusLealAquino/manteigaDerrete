@@ -10,6 +10,7 @@ export default (props: {
 		<TextInput
 			style = {{
 				height: 35,
+				padding: 10,
 				borderColor: 'gray', 
 				borderWidth: 1
 			}}
