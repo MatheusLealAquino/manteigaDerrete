@@ -38,8 +38,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
 	input: {
-		// maxHeight: 60,
-		// minHeight: 35,
 		padding: 10,
 		borderColor: 'gray', 
 		borderWidth: 1,
