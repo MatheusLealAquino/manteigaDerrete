@@ -8,22 +8,22 @@ export default ({ navigation }) => {
 	const [names, setNames] = useState(
 		[
 			{
-				_id: 'Macarrão',
+				id: 'Macarrão',
 				name: 'Macarrão'
 			},
 			{
-				_id: 'Arroz',
+				id: 'Arroz',
 				name: 'Arroz'
 			},
 			{
-				_id: 'Nhoque',
+				id: 'Nhoque',
 				name: 'Nhoque'
 			},
 		]
 	);
 
 	function onDelete(id: string) {
-		setNames(names.filter(el => el._id !== id));
+		setNames(names.filter(el => el.id !== id));
 	}
 
 	return (
@@ -34,8 +34,7 @@ export default ({ navigation }) => {
 				renderItem={
 					({item}) => {
 						return <Card
-							key={item._id}
-							id={item._id}
+							id={item.id}
 							name={item.name}
 							onDelete={onDelete}
 							navigation={navigation}

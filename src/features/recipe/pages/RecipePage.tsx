@@ -118,7 +118,7 @@ export default ({
 			<View style={styles.footer}>
 				<View style={{flex:1}}>
 					<Text style={styles.footerText}>
-						Tempo de preparação: <Text style={{fontWeight: 'bold'}}>{receipe.totalTime} minutos</Text>
+						Serve até: <Text style={{fontWeight: 'bold'}}>{receipe.serving}</Text>
 					</Text>
 				</View>
 			</View>

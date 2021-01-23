@@ -1,5 +1,5 @@
 export interface IIngredients {
-	_id: string,
+	id?: string,
 	quantity: number,
 	name: string,
 	description: string,
