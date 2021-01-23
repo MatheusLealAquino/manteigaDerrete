@@ -35,8 +35,8 @@ export default ({ navigation }) => {
 				(!ingredients || ingredients.length === 0)
 			) {
 			Alert.alert(
-				`Favor preencher os campos com *`,
-				'Verifique os campos com asterisco.',
+				`Não foi possível salvar essa receita`,
+				'Verifique os campos com asterisco (*)',
 				[
 					{
 						text: 'Tentar novamente',
@@ -121,7 +121,11 @@ export default ({ navigation }) => {
 
 				<Divisor style={{ marginTop: 15 }}/>
 				<View style={{ ...styles.inputView, paddingBottom: 15}}>
-					<Text>Lista de ingredientes: </Text>
+					<Text style={{fontWeight: 'bold'}}>
+						{
+							recipe.ingredients.length > 0 ? 'Lista de ingredientes:' : ''
+						}
+					</Text>
 
 					{recipe.ingredients.map(item => {
 						return (<Text key={item.id}>
@@ -129,14 +133,14 @@ export default ({ navigation }) => {
 						</Text>)
 					})}
 				</View>
-
-				<Button
-					title='Salvar receita'
-					onPress={() => {
-						onCreate(recipe)
-					}}
-				/>
 			</ScrollView>
+
+			<Button
+				title='Salvar receita'
+				onPress={() => {
+					onCreate(recipe)
+				}}
+			/>
 		</View>
 	);
 }
