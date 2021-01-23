@@ -107,6 +107,7 @@ export default ({ navigation }) => {
 						changeText={(text) => { setPreparation(text) }}
 						keyboardTypeValue=''
 						multiline={true}
+						numberOfLines={5}
 					/>
 				</View>
 

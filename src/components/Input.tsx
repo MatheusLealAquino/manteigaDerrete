@@ -1,21 +1,33 @@
-import React, { useState } from 'react';
-import { TextInput, StyleSheet } from 'react-native';
+import React from 'react';
+import { TextInput, StyleSheet, View, Text } from 'react-native';
 
 export default (props: {
 	value: string | undefined,
-	keyboardTypeValue?: any,
-	changeText: any,
+	keyboardTypeValue?: any
+	changeText: any
 	placeholder?: string
 	multiline?: boolean
+	numberOfLines?: number
 }) => {
+	const heightDecision = props.numberOfLines && props.numberOfLines > 0 ?
+		{
+			minHeight: 35,
+		} :
+		{
+			height: 35
+		};
+
 	return (
 		<TextInput
-			style = {styles.input}
+			style = {{
+				...styles.input,
+				...heightDecision
+			}}
 			keyboardType = {props.keyboardTypeValue || 'default'}
 			onChangeText = {text => props.changeText(text)}
 			placeholder = {props.placeholder}
 			multiline = {props.multiline}
-			numberOfLines={4}
+			numberOfLines={props.numberOfLines || 0}
 			value = {props.value}
 		/>
 	)
@@ -26,7 +38,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
 	input: {
-		height: 35,
+		// maxHeight: 60,
+		// minHeight: 35,
 		padding: 10,
 		borderColor: 'gray', 
 		borderWidth: 1,

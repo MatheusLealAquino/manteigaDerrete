@@ -63,6 +63,7 @@ export default ({ onAdd }) => {
 					value={description}
 					keyboardTypeValue=''
 					multiline={true}
+					numberOfLines={2}
 					placeholder={'Ex: 2 colheres'}
 				/>
 			</View>
