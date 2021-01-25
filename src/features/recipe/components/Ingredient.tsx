@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Alert } from 'react-native';
-import Input from '../../../components/Input';
+import { useFocusEffect } from '@react-navigation/native';
+
 import { IIngredients } from '../../../interfaces/IIngredients';
+
+import Input from '../../../components/Input';
 
 export default ({ onAdd }) => {
 	const [quantity, setQuantity] = useState<string>('');
 	const [name, setName] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
+
+	useFocusEffect(
+    React.useCallback(() => {
+			console.log('limpando dados do componente de ingredientes');
+
+			setQuantity('');
+			setQuantity('');
+			setDescription('');
+    }, [onAdd])
+  );
 
 	function tryAdd () {
 		if (!quantity || !name) {
@@ -69,7 +82,7 @@ export default ({ onAdd }) => {
 			</View>
 
 			<View style={styles.button}>
-				<Button
+				<Button	
 					title='Adicionar ingrediente'
 					onPress={() => { tryAdd() }}
 				/>
@@ -81,6 +94,7 @@ export default ({ onAdd }) => {
 const styles = StyleSheet.create({
 	button: {
 		marginTop: 15,
+		marginVertical: 5,
 		paddingHorizontal: 60,
 	},
 })

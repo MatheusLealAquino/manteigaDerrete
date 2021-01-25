@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, StyleSheet, View, Text } from 'react-native';
+import { TextInput, StyleSheet } from 'react-native';
 
 export default (props: {
 	value: string | undefined,
@@ -27,7 +27,7 @@ export default (props: {
 			onChangeText = {text => props.changeText(text)}
 			placeholder = {props.placeholder}
 			multiline = {props.multiline}
-			numberOfLines={props.numberOfLines || 0}
+			numberOfLines={props.numberOfLines || 1}
 			value = {props.value}
 		/>
 	)

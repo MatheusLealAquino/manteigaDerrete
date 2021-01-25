@@ -1,7 +1,7 @@
 export default {
 	container: {
 		flex: 1,
-		backgroundColor: '#ffffff'
+		backgroundColor: '#ffffff',
 	},
 	text: {
 		fontSize: 16

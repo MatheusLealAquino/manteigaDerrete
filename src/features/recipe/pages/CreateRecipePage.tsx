@@ -7,24 +7,34 @@ import {
 	ScrollView,
 	Alert
 } from 'react-native';
-import Input from '../../../components/Input';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { IIngredients } from '../../../interfaces/IIngredients';
 import { IRecipe } from '../../../interfaces/IRecipe';
 
 import DefaultStyle from '../../../style/default.style';
 
+import Input from '../../../components/Input';
 import Ingredient from '../components/Ingredient';
 import Divisor from '../../../components/Divisor';
 
 export default ({ navigation }) => {
-	const [recipes, setRecipes] = useState<IRecipe[]>([]);
-	const [recipe, setRecipe] = useState<IRecipe>({
+	const initialRecipe = {
 		name: '',
 		serving: 0,
 		ingredients: [],
 		preparation: ''
-	});
+	};
+
+	const [recipes, setRecipes] = useState<IRecipe[]>([]);
+	const [recipe, setRecipe] = useState<IRecipe>(initialRecipe);
+
+	useFocusEffect(
+    React.useCallback(() => {
+			console.log('limpando dados da tela de criar receita');
+			setRecipe(initialRecipe);
+    }, [navigation])
+  );
 
 	function onCreate(recipe: IRecipe) {
 		const { name, serving, preparation, ingredients } = recipe;
@@ -134,14 +144,16 @@ export default ({ navigation }) => {
 						</Text>)
 					})}
 				</View>
+				
+				<View style={styles.buttonToCreate}>
+					<Button
+						title='Salvar receita'
+						onPress={() => {
+							onCreate(recipe)
+						}}
+					/>
+				</View>
 			</ScrollView>
-
-			<Button
-				title='Salvar receita'
-				onPress={() => {
-					onCreate(recipe)
-				}}
-			/>
 		</View>
 	);
 }
@@ -151,5 +163,9 @@ const styles = StyleSheet.create({
 	inputView: {
 		paddingHorizontal: 10,
 		paddingTop: 10,
+	},
+	buttonToCreate: {
+		display: 'flex',
+		padding: 10
 	}
 })

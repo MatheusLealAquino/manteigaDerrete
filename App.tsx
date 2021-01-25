@@ -1,28 +1,28 @@
 import React from 'react';
 import { 
 	StyleSheet,
-	View,
 	Platform,
 	KeyboardAvoidingView,
 	TouchableWithoutFeedback,
 	Keyboard,
 	SafeAreaView,
-	ScrollView
 } from 'react-native';
+import { enableScreens } from 'react-native-screens';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import DefaultStyle from './src/style/default.style';
 
-import routes from './src/routes';
-
-import { enableScreens } from 'react-native-screens';
+import {
+	MainStackNavigator,
+	CreateRecipeStackNavigator
+} from './src/navigator/StackNavigator';
 
 enableScreens();
 
 export default function App() {
-	const Stack = createStackNavigator();
+	const Tab = createBottomTabNavigator();
 
 	return (
 		<KeyboardAvoidingView
@@ -32,18 +32,18 @@ export default function App() {
 			<NavigationContainer>
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 					<SafeAreaView style={styles.container}>
-						<Stack.Navigator initialRouteName='RecipesPage'>
-							{
-								routes.map((route, index: number) => (
-									<Stack.Screen
-										key={index}
-										name={route.name} 
-										component={route.main}
-										options={{ title: route.title }}
-									/>
-									))
-								}
-						</Stack.Navigator>
+						<Tab.Navigator tabBarOptions={{
+
+						}}>
+							<Tab.Screen
+								name='Home'
+								component={MainStackNavigator}
+							/>
+							<Tab.Screen
+								name='Adicionar receita'
+								component={CreateRecipeStackNavigator}
+							/>
+						</Tab.Navigator>
 						<StatusBar style='auto' />
 					</SafeAreaView>
 				</TouchableWithoutFeedback>

@@ -42,11 +42,6 @@ export default ({ navigation }) => {
 					}
 				}
 			/>
-
-			<Button
-				title='Adicionar receita'
-				onPress={() => navigation.navigate('CreateRecipePage')}
-			/>
 		</View>
 	);
 }

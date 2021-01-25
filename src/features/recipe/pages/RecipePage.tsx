@@ -18,7 +18,7 @@ export default ({
 
 	const [receipe, setReceipe] = useState(
 		{
-			_id: route.params.id,
+			id: route.params.id,
 			name: route.params.name,
 			totalTime: 30,
 			serving: 2,
@@ -118,7 +118,7 @@ export default ({
 			<View style={styles.footer}>
 				<View style={{flex:1}}>
 					<Text style={styles.footerText}>
-						Serve até: <Text style={{fontWeight: 'bold'}}>{receipe.serving}</Text>
+						Serve até: <Text style={{fontWeight: 'bold'}}>{receipe.serving}</Text> pessoas.
 					</Text>
 				</View>
 			</View>

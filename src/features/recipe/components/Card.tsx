@@ -142,14 +142,13 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: 60,
     marginLeft: 100,
-    justifyContent: 'space-around',
-		alignItems: 'flex-start',
+		display: 'flex',
 	},
 	item: {
+		paddingTop: 15,
 		paddingLeft: 20,
-		justifyContent: 'center',
-		alignItems: 'center',
 		fontSize: 18,
-		width: Dimensions.get('window').width
+		width: Dimensions.get('window').width,
+		height: 50
 	},
 });
