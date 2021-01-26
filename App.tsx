@@ -11,6 +11,7 @@ import { enableScreens } from 'react-native-screens';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import DefaultStyle from './src/style/default.style';
 
@@ -26,15 +27,35 @@ export default function App() {
 
 	return (
 		<KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "padding" : undefined }
       style={{flex: 1}}
     >
 			<NavigationContainer>
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 					<SafeAreaView style={styles.container}>
-						<Tab.Navigator tabBarOptions={{
+						<Tab.Navigator
+							tabBarOptions={{
+								labelStyle: {
+									paddingVertical: 3,
+								}
+							}}
 
-						}}>
+							screenOptions={({route}) => ({
+								tabBarIcon: ({color, size}) => {
+									let iconName;
+
+									switch(route.name) {
+										case 'Home':
+											iconName = 'home';
+											break;
+										case 'Adicionar receita':
+											iconName = 'add-circle-outline'
+									}
+
+									return <Ionicons name={iconName} size={size} color={color} />
+								}
+							})}
+						>
 							<Tab.Screen
 								name='Home'
 								component={MainStackNavigator}
@@ -55,6 +76,5 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		...DefaultStyle.container,
-		paddingTop: 0,
 	},
 });
