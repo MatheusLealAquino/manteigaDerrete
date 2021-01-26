@@ -11,13 +11,17 @@ export default ({ onAdd }) => {
 	const [name, setName] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
 
+	function setInitialState() {
+		setName('');
+		setQuantity('');
+		setDescription('');
+	}
+
 	useFocusEffect(
     React.useCallback(() => {
 			console.log('limpando dados do componente de ingredientes');
 
-			setQuantity('');
-			setQuantity('');
-			setDescription('');
+			setInitialState();
     }, [onAdd])
   );
 
@@ -44,9 +48,7 @@ export default ({ onAdd }) => {
 			description
 		};
 
-		setQuantity('');
-		setName('');
-		setDescription('');
+		setInitialState();
 		onAdd(ingredient);
 	}
 

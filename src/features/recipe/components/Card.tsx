@@ -11,8 +11,8 @@ import {
 import colorsStyle from '../../../style/colors.style';
 
 export default (props: {
+	id: string | undefined,
 	name: string,
-	id: string,
 	onDelete: Function,
 	navigation: any
 }) => {

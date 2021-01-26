@@ -1,44 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+
+import Divisor from '../../../components/Divisor';
 
 import { IIngredients } from '../../../interfaces/IIngredients';
 
 import ColorsStyle from '../../../style/colors.style';
 import DefaultStyle from '../../../style/default.style';
-import Divisor from '../../../components/Divisor';
+
+import { recipeStore } from '../../../store';
+import { IRecipe } from '../../../interfaces/IRecipe';
 
 export default ({
 	route,
 }) => {
 	const divisorSpace = 10;
+	const initialRecipe = {
+		name: '',
+		serving: 0,
+		ingredients: [],
+		preparation: ''
+	};
+
 	const [selected, setSelected] = useState({
 		ingredients: true,
 		preparation: false,
 	});
 
-	const [receipe, setReceipe] = useState(
-		{
-			id: route.params.id,
-			name: route.params.name,
-			totalTime: 30,
-			serving: 2,
-			ingredients: [
-				{
-					_id: '0',
-					quantity: 1,
-					name: 'Manteiga',
-					description: ''
-				},
-				{
-					_id: '0',
-					quantity: 1,
-					name: 'Farinha de trigo',
-					description: '2 colheres'
-				}
-			],
-			preparation: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur quam dolor, non finibus orci volutpat quis. Vestibulum sagittis, neque nec mollis varius, ex tellus commodo justo,vitae eleifend mi diam et ipsum. Vivamus ac ornare nunc. Nam finibus, ante at sollicitudin efficitur, tellus eros vehicula sem, vel scelerisque augue augue a felis. Morbi enim urna, porta vel pulvinar vitae, tempus a elit. In vel fermentum mi. Quisque a dolor erat. Nunc ut vehicula ligula. Nunc fringilla fringilla lacus, ac euismod ante malesuada in. Integer mauris sem, ultricies eu luctus vitae, tincidunt vitae nunc.`
-		},
-	);
+	const [receipe, setRecipe] = useState<IRecipe>(initialRecipe);
+
+	async function getRecipe() {
+		setRecipe(
+			await recipeStore.getRecipeById(route.params.id)
+		);
+	}
+
+	useEffect(() => {
+		getRecipe();
+	});
 
 	function mountIngredients (ingredients: Array<IIngredients>) : string {
 		let result = ``;

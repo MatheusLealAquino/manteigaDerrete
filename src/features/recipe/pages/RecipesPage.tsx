@@ -1,36 +1,38 @@
 import React, { useState } from 'react';
-import { StyleSheet, FlatList, View, Button } from 'react-native';
+import { StyleSheet, FlatList, View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+
+import { IRecipe } from '../../../interfaces/IRecipe';
 
 import DefaultStyle from '../../../style/default.style';
 import Card from '../components/Card';
 
+import { recipeStore } from '../../../store';
+
 export default ({ navigation }) => {
-	const [names, setNames] = useState(
-		[
-			{
-				id: 'Macarrão',
-				name: 'Macarrão'
-			},
-			{
-				id: 'Arroz',
-				name: 'Arroz'
-			},
-			{
-				id: 'Nhoque',
-				name: 'Nhoque'
-			},
-		]
+	const [recipes, setRecipes] = useState<IRecipe[]>();
+
+	useFocusEffect(
+    React.useCallback(() => {
+			getRecipes();
+    }, [navigation])
 	);
 
-	function onDelete(id: string) {
-		setNames(names.filter(el => el.id !== id));
+	async function getRecipes () {
+		const initialRecipes = await recipeStore.getRecipes();
+		setRecipes(initialRecipes);
+	}
+
+	async function onDelete(id: string) {
+		await recipeStore.deleteRecipe(id);
+		getRecipes();
 	}
 
 	return (
 		<View style={styles.container}>
 			<FlatList
-				data={names}
-				extraData={names}
+				data={recipes}
+				extraData={recipes}
 				renderItem={
 					({item}) => {
 						return <Card

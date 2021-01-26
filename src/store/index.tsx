@@ -1,1 +1,5 @@
-export const recipe = require('../features/recipe/recipe.store');
+import * as recipeStore from '../features/recipe/recipe.store';
+
+export {
+	recipeStore
+};

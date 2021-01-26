@@ -18,6 +18,8 @@ import Input from '../../../components/Input';
 import Ingredient from '../components/Ingredient';
 import Divisor from '../../../components/Divisor';
 
+import { recipeStore } from '../../../store';
+
 export default ({ navigation }) => {
 	const initialRecipe = {
 		name: '',
@@ -26,7 +28,6 @@ export default ({ navigation }) => {
 		preparation: ''
 	};
 
-	const [recipes, setRecipes] = useState<IRecipe[]>([]);
 	const [recipe, setRecipe] = useState<IRecipe>(initialRecipe);
 
 	useFocusEffect(
@@ -34,9 +35,9 @@ export default ({ navigation }) => {
 			console.log('limpando dados da tela de criar receita');
 			setRecipe(initialRecipe);
     }, [navigation])
-  );
+	);
 
-	function onCreate(recipe: IRecipe) {
+	async function onCreate(recipe: IRecipe) {
 		const { name, serving, preparation, ingredients } = recipe;
 
 		if (!name ||
@@ -58,7 +59,20 @@ export default ({ navigation }) => {
 			return;
 		}
 
-		setRecipes([...recipes, recipe]);
+		Alert.alert(
+			'Receita criada com sucesso!',
+			'Aproveite sua receita xD',
+			[
+				{
+					text: 'OK',
+					onPress: () => console.log('tentar novamente pressionado'),
+				},
+			],
+			{ cancelable: true }
+		);
+
+		await recipeStore.saveRecipe(recipe);
+		setRecipe(initialRecipe);
 	}
 
 	function setName(name: string) {
