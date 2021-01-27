@@ -3,13 +3,13 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import Divisor from '../../../components/Divisor';
 
-import { IIngredients } from '../../../interfaces/IIngredients';
+import { IIngredients } from '../../../interfaces/ingredients.interface';
 
 import ColorsStyle from '../../../style/colors.style';
 import DefaultStyle from '../../../style/default.style';
 
 import { recipeStore } from '../../../store';
-import { IRecipe } from '../../../interfaces/IRecipe';
+import IRecipe from '../../../interfaces/recipe.interface';
 
 export default ({
 	route,

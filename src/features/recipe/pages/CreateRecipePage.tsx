@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { IIngredients } from '../../../interfaces/IIngredients';
-import { IRecipe } from '../../../interfaces/IRecipe';
+import { IIngredients } from '../../../interfaces/ingredients.interface';
+import IRecipe from '../../../interfaces/recipe.interface';
 
 import DefaultStyle from '../../../style/default.style';
 
@@ -141,12 +141,13 @@ export default ({ navigation }) => {
 					/>
 					<Ingredient
 						onAdd={setIngredients}
-						/>
+					/>
 				</View>
 
 				<Divisor style={{ marginTop: 15 }}/>
-				<View style={{ ...styles.inputView, paddingBottom: 15}}>
-					<Text style={{fontWeight: 'bold'}}>
+
+				<View style={styles.ingredientArea}>
+					<Text style={styles.ingredientTitle}>
 						{
 							recipe.ingredients.length > 0 ? 'Lista de ingredientes:' : ''
 						}
@@ -181,5 +182,13 @@ const styles = StyleSheet.create({
 	buttonToCreate: {
 		display: 'flex',
 		padding: 10
+	},
+	ingredientArea: {
+		paddingHorizontal: 10,
+		paddingTop: 10,
+		paddingBottom: 15
+	},
+	ingredientTitle: {
+		fontWeight: 'bold'
 	}
 })

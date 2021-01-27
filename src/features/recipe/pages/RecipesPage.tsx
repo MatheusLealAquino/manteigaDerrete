@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, FlatList, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { IRecipe } from '../../../interfaces/IRecipe';
+import IRecipe from '../../../interfaces/recipe.interface';
 
 import DefaultStyle from '../../../style/default.style';
 import Card from '../components/Card';

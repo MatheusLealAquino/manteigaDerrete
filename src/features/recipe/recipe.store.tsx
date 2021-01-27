@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { IRecipe } from '../../interfaces/IRecipe';
+import IRecipe from '../../interfaces/recipe.interface';
 
 const getData = async (key: string) => {
   try {

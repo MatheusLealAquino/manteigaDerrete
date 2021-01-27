@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { IIngredients } from '../../../interfaces/IIngredients';
+import { IIngredients } from '../../../interfaces/ingredients.interface';
 
 import Input from '../../../components/Input';
 

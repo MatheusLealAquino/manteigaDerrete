@@ -1,6 +1,6 @@
-import { IIngredients } from "./IIngredients";
+import { IIngredients } from "./ingredients.interface";
 
-export interface IRecipe {
+export default interface IRecipe {
 	id?: string,
 	name: string,
 	serving?: number,
