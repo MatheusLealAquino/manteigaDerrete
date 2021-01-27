@@ -17,7 +17,8 @@ import DefaultStyle from './src/style/default.style';
 
 import {
 	MainStackNavigator,
-	CreateRecipeStackNavigator
+	CreateRecipeStackNavigator,
+	DetectFoodStackNavigator
 } from './src/navigator/StackNavigator';
 
 enableScreens();
@@ -49,7 +50,11 @@ export default function App() {
 											iconName = 'home';
 											break;
 										case 'Adicionar receita':
-											iconName = 'add-circle-outline'
+											iconName = 'add-circle-outline';
+											break;
+										case 'Detectar a comida':
+											iconName = 'search-outline';
+											break;
 									}
 
 									return <Ionicons name={iconName} size={size} color={color} />
@@ -63,6 +68,10 @@ export default function App() {
 							<Tab.Screen
 								name='Adicionar receita'
 								component={CreateRecipeStackNavigator}
+							/>
+							<Tab.Screen
+								name='Detectar a comida'
+								component={DetectFoodStackNavigator}
 							/>
 						</Tab.Navigator>
 						<StatusBar style='auto' />

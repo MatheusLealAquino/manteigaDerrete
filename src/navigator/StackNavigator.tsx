@@ -1,11 +1,13 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import ColorsStyle from '../style/colors.style';
 
-import RecipesPage from "../features/recipe/pages/RecipesPage";
-import RecipePage from "../features/recipe/pages/RecipePage";
-import CreateRecipePage from "../features/recipe/pages/CreateRecipePage";
+import RecipesPage from '../features/recipe/pages/RecipesPage';
+import RecipePage from '../features/recipe/pages/RecipePage';
+import CreateRecipePage from '../features/recipe/pages/CreateRecipePage';
+
+import DetectFoodPage from '../features/detectFood/pages/DetectFoodPage';
 
 const Stack = createStackNavigator();
 
@@ -28,7 +30,7 @@ const MainStackNavigator = () => {
 				}}
 			/>
       <Stack.Screen
-				name="RecipePage"
+				name='RecipePage'
 				component={RecipePage}
 				options={{
 					title: 'Receita'
@@ -42,7 +44,7 @@ const CreateRecipeStackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen
-				name="CreateRecipePage"
+				name='CreateRecipePage'
 				component={CreateRecipePage}
 				options={{
 					title: 'Adicionar receita'
@@ -52,7 +54,22 @@ const CreateRecipeStackNavigator = () => {
   );
 }
 
+const DetectFoodStackNavigator = () => {
+	return (
+		<Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen
+				name='DetectFoodPage'
+				component={DetectFoodPage}
+				options={{
+					title: 'Detecte a comida'
+				}}
+			/>
+    </Stack.Navigator>
+	)
+}
+
 export {
 	MainStackNavigator,
-	CreateRecipeStackNavigator 
+	CreateRecipeStackNavigator,
+	DetectFoodStackNavigator
 };
