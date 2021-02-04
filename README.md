@@ -13,9 +13,10 @@
 - [x] Página da receita (Page of receipe)
 
 ### Imagens (Images)
-![Receitas / Recipes](recipes.jpeg)
-![Gerenciar receita / Manage recipe](manageRecipes.jpeg)
-![Receita / Recipe](recipePage.jpeg)
-![Receita / Recipe](recipePage1.jpeg)
-![Criar receita / Create recipe](createRecipe.jpeg)
-![Criar receita / Create recipe](createRecipe1.jpeg)
+Receitas / Recipes       |  Gerenciar receita / Manage recipe |  Receita / Recipe | Receita / Recipe
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------: |
+![Receitas / Recipes](recipes.jpeg) |  ![Gerenciar receita / Manage recipe](manageRecipes.jpeg) | ![Receita / Recipe](recipePage.jpeg) | ![Receita / Recipe](recipePage1.jpeg)
+
+Criar receita / Create recipe | Criar receita / Create recipe |
+:-------------------------: | :-------------------------:
+![Criar receita / Create recipe](createRecipe.jpeg) | ![Criar receita / Create recipe](createRecipe1.jpeg)
