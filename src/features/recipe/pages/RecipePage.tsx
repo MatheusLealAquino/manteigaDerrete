@@ -36,7 +36,17 @@ export default ({
 	}
 
 	useEffect(() => {
-		getRecipe();
+		let mounted = true
+
+		recipeStore.getRecipeById(route.params.id).then((response) => {
+			if (mounted) {
+				setRecipe(response);
+			}
+		})
+
+		return function cleanup() {
+			mounted = false
+		}
 	});
 
 	function mountIngredients (ingredients: Array<IIngredients>) : string {
