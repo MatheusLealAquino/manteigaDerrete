@@ -18,7 +18,6 @@ import DefaultStyle from './src/style/default.style';
 import {
 	MainStackNavigator,
 	CreateRecipeStackNavigator,
-	DetectFoodStackNavigator
 } from './src/navigator/StackNavigator';
 
 enableScreens();
@@ -52,8 +51,7 @@ export default function App() {
 										case 'Adicionar receita':
 											iconName = 'add-circle-outline';
 											break;
-										case 'Detectar a comida':
-											iconName = 'search-outline';
+										default:
 											break;
 									}
 
@@ -68,10 +66,6 @@ export default function App() {
 							<Tab.Screen
 								name='Adicionar receita'
 								component={CreateRecipeStackNavigator}
-							/>
-							<Tab.Screen
-								name='Detectar a comida'
-								component={DetectFoodStackNavigator}
 							/>
 						</Tab.Navigator>
 						<StatusBar style='auto' />

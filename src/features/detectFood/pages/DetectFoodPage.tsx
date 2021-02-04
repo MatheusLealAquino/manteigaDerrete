@@ -3,7 +3,6 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import DefaultStyle from '../../../style/default.style';
 
-import { recipeStore } from '../../../store';
 import IRecipe from '../../../interfaces/recipe.interface';
 
 export default ({}) => {
