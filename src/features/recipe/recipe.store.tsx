@@ -50,7 +50,7 @@ export const getRecipes = async () => {
 
 export const getRecipeById = async (id: string) => {
 	const recipes = await getData('recipes');
-	return recipes.find(el => el.id === id);
+	return recipes.find((el: IRecipe) => el.id === id);
 };
 
 export const deleteRecipe = async (id: string) => {
